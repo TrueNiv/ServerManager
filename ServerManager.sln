@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerManager", "ServerManager\ServerManager.csproj", "{441A515A-2407-45DF-96C8-735528727458}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerManager.Bot", "ServerManager.Bot\ServerManager.Bot.csproj", "{014D4B52-0BD7-4AA8-B939-1D2BFC4E6731}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerManager.Manager", "ServerManager.Manager\ServerManager.Manager.csproj", "{98704B03-0490-4676-8C36-137D3CC431FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{441A515A-2407-45DF-96C8-735528727458}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{441A515A-2407-45DF-96C8-735528727458}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{441A515A-2407-45DF-96C8-735528727458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{014D4B52-0BD7-4AA8-B939-1D2BFC4E6731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014D4B52-0BD7-4AA8-B939-1D2BFC4E6731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014D4B52-0BD7-4AA8-B939-1D2BFC4E6731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014D4B52-0BD7-4AA8-B939-1D2BFC4E6731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98704B03-0490-4676-8C36-137D3CC431FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98704B03-0490-4676-8C36-137D3CC431FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98704B03-0490-4676-8C36-137D3CC431FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98704B03-0490-4676-8C36-137D3CC431FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
