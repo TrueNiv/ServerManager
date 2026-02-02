@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ServerManager.Bot\ServerManager.Bot.csproj" />
+      <ProjectReference Include="..\ServerManager.Manager\ServerManager.Manager.csproj" />
     </ItemGroup>
 
 </Project>

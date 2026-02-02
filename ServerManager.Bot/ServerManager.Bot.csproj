@@ -13,4 +13,8 @@
       <PackageReference Include="NetCord.Services" Version="1.0.0-alpha.458" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ServerManager.Manager\ServerManager.Manager.csproj" />
+    </ItemGroup>
+
 </Project>
