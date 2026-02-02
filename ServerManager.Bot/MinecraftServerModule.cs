@@ -11,30 +11,47 @@ public class MinecraftServerModule(RestClient client) : IMessageCreateGatewayHan
     public static MinecraftManager? McManager;
     public async ValueTask HandleAsync(Message arg)
     {
+        var message = arg.Content.Trim();
         if (ServerVariables.ServerChannel != arg.ChannelId || McManager is null) return;
         
-        if (arg.Content.Equals($"{BotPrefix}start"))
+        if (message.Equals($"{BotPrefix}start"))
         {
-            McManager.Start();
-            await client.SendMessageAsync(arg.ChannelId, $"Starting server under the following ip: {GetPublicIPAddressAsync().Result}");
+            if (McManager.Start())
+            {
+                await client.SendMessageAsync(arg.ChannelId, 
+                    $"Starting server under the following ip: {GetPublicIPAddressAsync().Result}");
+            }
+            else
+            {
+                await client.SendMessageAsync(arg.ChannelId,
+                    $"Server is already running. To get the current IP type {BotPrefix}status.");
+            }
         }
-        if (arg.Content.Equals($"{BotPrefix}stop"))
+        if (message.Equals($"{BotPrefix}stop"))
         {
-            McManager.Stop();
-            await client.SendMessageAsync(arg.ChannelId, $"Stopping server...");
+            if (McManager.Stop())
+            {
+                await client.SendMessageAsync(arg.ChannelId, $"Stopping server...");
+            }
+            else
+            {
+                await client.SendMessageAsync(arg.ChannelId,
+                    $"Server is not running. To start the server type {BotPrefix}start.");
+            }
         }
-        if (arg.Content.Equals($"{BotPrefix}status"))
+        if (message.Equals($"{BotPrefix}status"))
         {
-            await client.SendMessageAsync(arg.ChannelId, $"IP: {GetPublicIPAddressAsync().Result}\nServer is running: {McManager.IsRunning()}");
+            await client.SendMessageAsync(arg.ChannelId, 
+                $"IP: {GetPublicIPAddressAsync().Result}\nServer is running: {McManager.IsRunning()}");
         }
         
         
         if (!ServerVariables.ServerAdmins.Contains(arg.Author.Id)) return;
         
-        if (arg.Content.StartsWith($"{BotPrefix}command "))
+        if (message.StartsWith($"{BotPrefix}command "))
         {
             var length = BotPrefix.Length + "command ".Length;
-            var substring = arg.Content.Substring(length);
+            var substring = message.Substring(length);
             
             var result = McManager.RunCommand(substring);
             if (result is not null) await client.SendMessageAsync(arg.ChannelId, result);

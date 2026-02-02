@@ -30,14 +30,18 @@ public class MinecraftManager : IDisposable
         _process.StartInfo = startInfo;
     }
 
-    public void Start()
+    public bool Start()
     {
+        if (IsRunning()) return false;
         _process.Start();
+        return true;
     }
 
-    public void Stop()
+    public bool Stop()
     {
+        if (!IsRunning()) return false;
         _rconHandler.RunCommand("stop").Wait();
+        return true;
     }
 
     public string? RunCommand(string command)
